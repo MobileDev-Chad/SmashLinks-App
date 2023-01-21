@@ -3,11 +3,11 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
   cors: {
-    origins: ['http://192.168.2.11:3000'],
+    origins: ['http://192.168.2.11:5000'],
   },
 });
 
-const port = 3000;
+const port = 5000;
 
 var smashers = {},
   unmatched;
