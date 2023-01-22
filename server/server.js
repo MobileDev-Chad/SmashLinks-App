@@ -3,22 +3,40 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
+
+// Routes
+import AuthRoute from "./routes/AuthRoute.js";
+import UserRoute from "./routes/UserRoute.js";
+import MatchRoute from "./routes/MatchRoute.js";
+
+
 const app = express();
+
+// Middleware
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+
 
 mongoose.set("strictQuery", true);
 
 dotenv.config();
+const PORT = process.env.PORT;
+
+const CONNECTION =process.env.MONGO_DB;
 
 mongoose
-  .connect(process.env.MONGO_DB, {
+  .connect(CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() =>
-    app.listen(process.env.PORT, () =>
-      console.log(`Listening at PORT: ${process.env.PORT}`)
+    app.listen(PORT, () =>
+      console.log(`Listening at PORT: ${PORT}`)
     )
   )
   .catch((error) => console.log(error));
+
+// Usage of routes
+app.use("/auth", AuthRoute);
+app.use("/user", UserRoute);
+app.use("/match", MatchRoute);
