@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 // Routes
 import AuthRoute from "./routes/AuthRoute.js";
 import UserRoute from "./routes/UserRoute.js";
-import MatchRoute from "./routes/MatchRoute.js";
+import PostRoute from "./routes/PostRoute.js";
 
 
 const app = express();
@@ -39,4 +39,4 @@ mongoose
 // Usage of routes
 app.use("/auth", AuthRoute);
 app.use("/user", UserRoute);
-app.use("/match", MatchRoute);
+app.use("/posts", PostRoute);
