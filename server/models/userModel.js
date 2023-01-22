@@ -19,11 +19,11 @@ const UserSchema = mongoose.Schema(
     },
     firstname: {
       type: String,
-      required: true,
+      // required: true,
     },
     lastname: {
       type: String,
-      required: true,
+      // required: true,
     },
     isAdmin: {
       type: Boolean,
