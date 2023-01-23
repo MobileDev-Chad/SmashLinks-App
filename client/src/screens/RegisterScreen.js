@@ -13,6 +13,8 @@ import { passwordValidator } from '../helpers/passwordValidator';
 import { nameValidator } from '../helpers/nameValidator';
 import Spinner from 'react-native-loading-spinner-overlay';
 import routes from '../navigation/routes';
+import { useDispatch } from 'react-redux';
+import { register } from '../redux/actions/AuthAction';
 
 
 export default function RegisterScreen({ navigation }) {
@@ -24,7 +26,13 @@ export default function RegisterScreen({ navigation }) {
   const onSignUpPressed = async () => {
     setSpinner(true);
 
+    const myForm = new FormData();
+        myForm.append("username", username);
+        myForm.append("email", email);
+        myForm.append("password", password);
    
+
+        dispatch(register(myForm));
   };
 
   return (
