@@ -11,6 +11,7 @@ import {
 const Stack = createStackNavigator();
 
 export default AuthNavigator = () => {
+  
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen

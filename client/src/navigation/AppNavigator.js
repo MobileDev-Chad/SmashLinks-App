@@ -19,6 +19,8 @@ const GameStack = createNativeStackNavigator();
 const StatsStack = createNativeStackNavigator();
 
 export default AppNavigator = (props) => {
+
+  
   return (
       <Tab.Navigator
         initialRouteName="Home"
