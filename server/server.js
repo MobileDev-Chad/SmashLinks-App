@@ -37,9 +37,7 @@ mongoose
   .catch((error) => console.log(error));
 
 // Usage of 
-app.get('/', (req,res)=>{
-  res.send("Server is ok545485458454")
-})
+
 app.use("/auth", AuthRoute);
 app.use("/user", UserRoute);
 app.use("/posts", PostRoute);
