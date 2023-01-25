@@ -38,7 +38,7 @@ mongoose
 
 // Usage of 
 app.get('/', (req,res)=>{
-  res.send("Server is ok")
+  res.send("Server is ok545485458454")
 })
 app.use("/auth", AuthRoute);
 app.use("/user", UserRoute);
