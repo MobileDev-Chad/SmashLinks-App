@@ -36,7 +36,10 @@ mongoose
   )
   .catch((error) => console.log(error));
 
-// Usage of routes
+// Usage of 
+app.get('/', (req,res)=>{
+  res.send("Server is ok")
+})
 app.use("/auth", AuthRoute);
 app.use("/user", UserRoute);
 app.use("/posts", PostRoute);
