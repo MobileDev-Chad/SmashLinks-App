@@ -18,7 +18,7 @@
     "@react-navigation/stack": "^6.3.11",
     "@reduxjs/toolkit": "^1.9.1",
     "apisauce": "^2.1.6",
-    "axios": "^1.2.3",
+    "axios": "^1.2.5",
     "dayjs": "^1.11.7",
     "eslint": "^8.32.0",
     "eslint-config-airbnb": "^19.0.4",
