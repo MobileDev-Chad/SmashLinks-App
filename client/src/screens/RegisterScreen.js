@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text } from 'react-native-paper';
 import Background from '../components/Background';
@@ -13,9 +13,10 @@ import { passwordValidator } from '../helpers/passwordValidator';
 import { nameValidator } from '../helpers/nameValidator';
 import Spinner from 'react-native-loading-spinner-overlay';
 import routes from '../navigation/routes';
+import authRequest from '../api/authRequest';
 import { useDispatch } from 'react-redux';
-import { register } from '../redux/actions/AuthAction';
-
+import { register } from '../redux/slices/authSlice';
+import client from '../api/client';
 
 export default function RegisterScreen({ navigation }) {
   const [username, setUsername] = useState({ value: '', error: '' });
@@ -23,16 +24,16 @@ export default function RegisterScreen({ navigation }) {
   const [password, setPassword] = useState({ value: '', error: '' });
   const [spinner, setSpinner] = useState(false);
 
+  const dispatch = useDispatch();
+
   const onSignUpPressed = async () => {
     setSpinner(true);
 
-    const myForm = new FormData();
-        myForm.append("username", username);
-        myForm.append("email", email);
-        myForm.append("password", password);
-   
-
-        dispatch(register(myForm));
+    await authRequest.register({
+      username: username.value,
+      email: email.value,
+      password: password.value,
+    });
   };
 
   return (

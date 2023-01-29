@@ -8,9 +8,9 @@ import {
   Dimensions,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useSelector } from "react-redux";
 import Screen from '../components/Screen';
 import Logo from '../components/Logo';
-import { useAuthValue } from '../auth/context';
 import { Text } from 'react-native-paper';
 import { FONTS, SIZES, theme } from '../core/theme';
 import ItemSeperator from '../components/ItemSeperator';
@@ -22,7 +22,11 @@ import Avatar from '../components/Avatar';
 
 const Dashboard = (props) => {
   const navigation = props.navigation;
-  const { currentUser } = useAuthValue();
+  // const { user: currentUser } = useSelector((state) => state.auth);
+
+  // if (!currentUser) {
+  //   return navigation.navigate('LoginScreen');
+  // }
 
 //   const getData = async () => {
 //     try {
@@ -62,7 +66,7 @@ const Dashboard = (props) => {
           <Logo />
         </View>
         <Text style={{ ...FONTS.h4, alignSelf: 'center' }}>
-          {currentUser.username}
+          {/* {currentUser.username} */}
         </Text>
         <Text
           style={{

@@ -11,6 +11,7 @@ import { theme } from '../core/theme';
 import { emailValidator } from '../helpers/emailValidator';
 import { passwordValidator } from '../helpers/passwordValidator';
 import Spinner from 'react-native-loading-spinner-overlay';
+import authRequest from '../api/authRequest';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState({ value: '', error: '' });
@@ -18,18 +19,22 @@ export default function LoginScreen({ navigation }) {
   const [spinner, setSpinner] = useState(false);
 
   const onLoginPressed = () => {
-    setSpinner(true);
-   
+    // setSpinner(true);
+    authRequest.login(email, password).then(() => {
+      navigation.navigate('Dashboard');
+    });
 
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
+
     if (emailError || passwordError) {
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
       return;
     }
-
-     navigation.navigate('Dashboard')
+    if (isLoggedIn) {
+      return navigation.navigate('Dashboard');
+    }
   };
 
   return (
@@ -59,9 +64,7 @@ export default function LoginScreen({ navigation }) {
         secureTextEntry
       />
       <View style={styles.forgotPassword}>
-        <TouchableOpacity
-          onPress={() => navigation.replace('Reset')}
-        >
+        <TouchableOpacity onPress={() => navigation.replace('Reset')}>
           <Text style={styles.forgot}>Forgot your password?</Text>
         </TouchableOpacity>
       </View>
@@ -69,7 +72,9 @@ export default function LoginScreen({ navigation }) {
         Login
       </Button>
       <View style={styles.row}>
-        <Text style={{ color: theme.colors.gray }}>Don't have an account? </Text>
+        <Text style={{ color: theme.colors.gray }}>
+          Don't have an account?{' '}
+        </Text>
         <TouchableOpacity onPress={() => navigation.replace('Register')}>
           <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
