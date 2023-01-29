@@ -2,13 +2,13 @@ import Constants from 'expo-constants';
 
 const settings = {
   dev: {
-    apiUrl: 'http://192.168.2.11:5000/',
+    apiUrl: 'https://smashlinks-server.herokuapp.com',
   },
   staging: {
-    apiUrl: 'http://192.168.2.11:5000/',
+    apiUrl: 'https://smashlinks-server.herokuapp.com',
   },
   prod: {
-    apiUrl: 'http://192.168.2.11:5000/',
+    apiUrl: 'https://smashlinks-server.herokuapp.com',
   },
 };
 
