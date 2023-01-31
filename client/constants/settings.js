@@ -2,13 +2,13 @@ import Constants from 'expo-constants';
 
 const settings = {
   dev: {
-    apiUrl: 'https://smashlinks-server.herokuapp.com',
+    apiUrl: 'https://all-trees-grow-65-93-58-234.loca.lt',
   },
   staging: {
-    apiUrl: 'https://smashlinks-server.herokuapp.com',
+    apiUrl: 'https://all-trees-grow-65-93-58-234.loca.lt',
   },
   prod: {
-    apiUrl: 'https://smashlinks-server.herokuapp.com',
+    apiUrl: 'https://all-trees-grow-65-93-58-234.loca.lt',
   },
 };
 
